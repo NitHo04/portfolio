@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 760" width="1200" height="760" role="img" aria-label="Schéma : le navigateur Tor joint un service caché hébergé dans une machine virtuelle, sans aucun port entrant ouvert.">
+  <rect width="1200" height="760" fill="#0d0f13"/>
+
+  <g font-family="JetBrains Mono, Consolas, monospace" fill="#f4f2ed">
+    <!-- 1. client -->
+    <rect x="60" y="200" width="250" height="200" rx="4" fill="none" stroke="#33373f" stroke-width="2"/>
+    <text x="185" y="272" text-anchor="middle" font-size="26" font-weight="600">Navigateur</text>
+    <text x="185" y="308" text-anchor="middle" font-size="26" font-weight="600">Tor</text>
+    <text x="185" y="352" text-anchor="middle" font-size="18" fill="#8b8a83">la cible</text>
+
+    <!-- 2. reseau tor -->
+    <rect x="400" y="200" width="380" height="200" rx="4" fill="none" stroke="#e0a458" stroke-width="2"/>
+    <text x="590" y="266" text-anchor="middle" font-size="26" font-weight="600" fill="#e0a458">Réseau Tor</text>
+    <text x="590" y="312" text-anchor="middle" font-size="20">3 nœuds</text>
+    <text x="590" y="346" text-anchor="middle" font-size="20">+ point de rendez-vous</text>
+
+    <!-- 3. VM -->
+    <rect x="870" y="150" width="280" height="300" rx="4" fill="none" stroke="#33373f" stroke-width="2"/>
+    <text x="1010" y="196" text-anchor="middle" font-size="26" font-weight="600">VM Ubuntu</text>
+    <line x1="900" y1="216" x2="1120" y2="216" stroke="#22252b" stroke-width="1"/>
+    <text x="1010" y="258" text-anchor="middle" font-size="19" fill="#b9b7b0">tor</text>
+    <text x="1010" y="288" text-anchor="middle" font-size="19" fill="#8b8a83">SocksPort 9050</text>
+    <text x="1010" y="340" text-anchor="middle" font-size="19" fill="#b9b7b0">service caché</text>
+    <text x="1010" y="370" text-anchor="middle" font-size="19" fill="#8b8a83">80 vers 8080</text>
+    <text x="1010" y="420" text-anchor="middle" font-size="19" fill="#b9b7b0">http.server</text>
+
+    <!-- lien client vers reseau -->
+    <line x1="310" y1="300" x2="396" y2="300" stroke="#f4f2ed" stroke-width="2"/>
+    <polygon points="396,300 384,294 384,306" fill="#f4f2ed"/>
+
+    <!-- connexion sortante : de la VM vers le reseau, en sens inverse du flux vu par le client -->
+    <line x1="866" y1="260" x2="784" y2="260" stroke="#e0a458" stroke-width="2"/>
+    <polygon points="784,260 796,254 796,266" fill="#e0a458"/>
+    <text x="825" y="238" text-anchor="middle" font-size="15" fill="#e0a458" transform="rotate(0)">sortante</text>
+
+    <!-- lien reseau vers service -->
+    <line x1="866" y1="350" x2="784" y2="350" stroke="#f4f2ed" stroke-width="2" stroke-dasharray="6 6"/>
+    <text x="825" y="382" text-anchor="middle" font-size="15" fill="#8b8a83">tunnel</text>
+
+    <!-- legende -->
+    <text x="60" y="560" font-size="22" fill="#f4f2ed">Aucun port entrant. Aucune redirection NAT.</text>
+    <text x="60" y="600" font-size="20" fill="#8b8a83">C'est la VM qui ouvre le canal vers l'extérieur et le maintient.</text>
+    <text x="60" y="660" font-size="20" fill="#8b8a83">C'est aussi le mécanisme d'un canal de commande malveillant.</text>
+    <line x1="60" y1="500" x2="1150" y2="500" stroke="#22252b" stroke-width="1"/>
+  </g>
+</svg>

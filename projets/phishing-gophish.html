@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Campagne de phishing avec GoPhish · Benitho Ntenda</title>
+<meta name="description" content="Jouer l&#x27;attaquant et la victime dans la même machine virtuelle pour comprendre pourquoi une attaque aussi banale fonctionne encore. Rien n&#x27;est sorti du laboratoire.">
+<meta name="author" content="Benitho Ntenda">
+<meta property="og:title" content="Campagne de phishing avec GoPhish · Benitho Ntenda">
+<meta property="og:description" content="Jouer l&#x27;attaquant et la victime dans la même machine virtuelle pour comprendre pourquoi une attaque aussi banale fonctionne encore. Rien n&#x27;est sorti du laboratoire.">
+<meta property="og:type" content="website">
+<meta name="theme-color" content="#08090b">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%2308090b'/%3E%3Ccircle cx='16' cy='16' r='7' fill='%23e0a458'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+<a class="skip" href="#contenu">Aller au contenu</a>
+<header class="site-header" id="top">
+  <div class="wrap site-header__inner">
+    <a class="brand" href="../index.html"><span class="brand__dot"></span>Benitho Ntenda</a>
+    <nav class="site-nav" aria-label="Navigation principale">
+      <a href="../index.html#travaux">Travaux</a>
+      <a href="../index.html#apropos" data-hide>À propos</a>
+      <a href="../index.html#competences" data-hide>Compétences</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<main id="contenu" class="fiche">
+  <div class="wrap">
+    <div class="fiche__head">
+      <div>
+        <p class="fiche__kicker">03 · Simulation d&#x27;attaque · 2026</p>
+        <h1 class="fiche__title">Campagne de phishing avec GoPhish</h1>
+        <p class="fiche__lede">Jouer l&#x27;attaquant et la victime dans la même machine virtuelle pour comprendre pourquoi une attaque aussi banale fonctionne encore. Rien n&#x27;est sorti du laboratoire.</p>
+      </div>
+      <dl class="specs"><div><dt>Cadre</dt><dd>TP encadré, groupe de trois</dd></div><div><dt>Rôle</dt><dd>Montage de la chaîne et rédaction</dd></div><div><dt>Outils</dt><dd>GoPhish, Mailpit, VirtualBox</dd></div><div><dt>Livrable</dt><dd>Rapport pas à pas avec captures</dd></div></dl>
+    </div>
+
+    <figure class="fiche__figure">
+      <img src="../assets/img/phish.webp" alt="La page piège servie aux cibles, cohérente avec l&#x27;objet du mail envoyé." width="650" height="690" decoding="async">
+      <figcaption>La page piège servie aux cibles, cohérente avec l&#x27;objet du mail envoyé.</figcaption>
+    </figure>
+
+    <section class="block">
+  <h2 class="block__title">Contexte</h2>
+  <div class="block__body">
+<p>
+  Le scénario retenu est une <strong>fraude au président</strong> : l'attaquant se
+  fait passer pour un dirigeant et obtient d'un employé un virement urgent. C'est
+  l'une des arnaques les plus anciennes du répertoire, et l'une des plus rentables.
+</p>
+<p>
+  L'objectif n'était pas de savoir cliquer sur envoyer, mais de voir chaque maillon
+  de la chaîne, puis de comprendre quel maillon on peut réellement casser côté
+  défense.
+</p>
+</div>
+</section><section class="block">
+  <h2 class="block__title">Le scénario</h2>
+  <div class="block__body">
+<div class="table-wrap">
+  <table>
+    <tbody>
+      <tr><th>Usurpé</th><td>La directrice administrative et financière</td></tr>
+      <tr><th>Cible</th><td>L'assistante de direction, arrivée depuis quatre mois</td></tr>
+      <tr><th>Prétexte</th><td>Un règlement fournisseur oublié, à régulariser avant 18 h à cause de la clôture comptable</td></tr>
+      <tr><th>Leviers</th><td>L'autorité, l'urgence, la procédure interne, le secret</td></tr>
+    </tbody>
+  </table>
+</div>
+<div class="note">
+  <p>
+    Le détail qui rend ce mail dangereux : <strong>il ne demande pas d'enfreindre la
+    procédure, il demande de l'appliquer</strong>. Une personne vigilante se méfie
+    d'un message qui viole les règles. Beaucoup moins d'un message qui les respecte.
+  </p>
+</div>
+</div>
+</section><section class="block">
+  <h2 class="block__title">Ce que j&#x27;ai fait</h2>
+  <div class="block__body">
+<ol class="steps">
+  <li><strong>Profil d'envoi.</strong> Par quel serveur les mails partent et sous quelle identité, validé par un envoi de test avant tout le reste.</li>
+  <li><strong>Page piège.</strong> Un faux portail interne annonçant une opération en attente, cohérent avec l'objet du mail, avec collecte des données et des mots de passe activée.</li>
+  <li><strong>Modèle de mail.</strong> Lien généré par l'outil et non écrit en dur, pour que chaque destinataire reçoive une adresse différente et qu'on sache qui clique.</li>
+  <li><strong>Groupe de cibles</strong> rattaché à l'entreprise fictive.</li>
+  <li><strong>Campagne</strong>, qui assemble les quatre objets. Avant elle, ce ne sont que des objets inertes.</li>
+</ol>
+<p>
+  Détail d'architecture qui compte : l'outil lance <strong>deux serveurs
+  distincts</strong>, l'administration d'un côté et les pages servies aux victimes de
+  l'autre. Une victime ne doit jamais tomber sur l'interface d'administration, et se
+  tromper de port fait échouer la campagne entière.
+</p>
+</div>
+</section><section class="block">
+  <h2 class="block__title">Résultat</h2>
+  <div class="block__body">
+<p>Les quatre compteurs racontent chacun une étape franchie.</p>
+<dl class="kpis">
+  <div><dt>Mail envoyé</dt><dd>1</dd></div>
+  <div><dt>Ouvert, lien cliqué</dt><dd>1 / 1</dd></div>
+  <div><dt>Identifiants soumis</dt><dd>1</dd></div>
+</dl>
+<p>
+  Jusqu'à la récupération du mot de passe, le parcours est complet. Les quatre
+  erreurs rencontrées valent plus que le résultat : mauvais port dans l'URL de la
+  campagne, format d'expéditeur refusé, campagne supprimée trop tôt ce qui détruit
+  ses résultats et invalide les liens déjà envoyés, et groupe resté vide faute
+  d'avoir validé la ligne du destinataire.
+</p>
+</div>
+</section><section class="block">
+  <h2 class="block__title">Ce qui arrête réellement l&#x27;attaque</h2>
+  <div class="block__body">
+<ul>
+  <li><strong>Deux valideurs au dessus du seuil, même quand le demandeur est le dirigeant.</strong> Aucune opération ne doit pouvoir être initiée et validée par la même personne. Cette règle détruit le scénario entier.</li>
+  <li><strong>Ne jamais vérifier par le canal indiqué dans la demande.</strong> On raccroche et on rappelle sur un numéro connu par ailleurs.</li>
+  <li><strong>Double authentification</strong> sur la messagerie et les outils bancaires : un mot de passe volé ne suffit plus.</li>
+  <li><strong>SPF, DKIM et DMARC</strong> bien configurés, avec la limite que ce TP rend évidente : ces mécanismes authentifient un domaine, pas une intention. Un attaquant qui utilise un domaine sosie publie ses propres enregistrements et passe tous les contrôles.</li>
+</ul>
+</div>
+</section><section class="block">
+  <h2 class="block__title">Limites</h2>
+  <div class="block__body">
+<ul>
+  <li>Une seule cible, donc aucun enseignement statistique sur un taux de clic réel.</li>
+  <li>Aucun filtre anti-spam sur le chemin : un vrai envoi externe aurait été arrêté avant la boîte.</li>
+  <li>Environnement local uniquement, volontairement. Aucun message n'a quitté la VM.</li>
+  <li>Page piège simple, sans comportement dynamique capable de résister à un utilisateur méfiant.</li>
+</ul>
+</div>
+</section><section class="block">
+  <h2 class="block__title">Ce que j&#x27;en retiens</h2>
+  <div class="block__body">
+<p>
+  En moins d'une heure, avec des outils gratuits, on obtient une attaque complète et
+  chiffrée. La barrière technique n'existe pas. Ce qui protège, c'est une règle de
+  gouvernance et une deuxième personne.
+</p>
+<p>
+  Et une leçon de conception : la cohérence entre le message et la page vaut plus que
+  la qualité graphique de la page. C'est là que se joue la crédibilité.
+</p>
+</div>
+</section>
+
+    <div class="block__body" style="padding-block:2rem 0">
+      <ul class="tags"><li>GoPhish</li><li>Ingénierie sociale</li><li>SPF / DKIM / DMARC</li></ul>
+    </div>
+
+    <nav class="fiche__nav" aria-label="Navigation entre projets">
+      <a href="tor-lab.html">← Service onion auto-hébergé</a>
+      <a href="pssi-valmont.html">PSSI de la Métropole de Valmont →</a>
+    </nav>
+  </div>
+</main>
+<footer class="footer" id="contact">
+  <div class="wrap">
+    <h2 class="footer__title">Travaillons ensemble</h2>
+    <p class="footer__text">
+      Je cherche une alternance ou un stage en cybersécurité, et je prends aussi des
+      projets de design et d'automatisation. Écris-moi, je réponds vite.
+    </p>
+    <a class="mail" href="mailto:benithooff04@icloud.com">benithooff04@icloud.com</a>
+    <p class="mail__hint">Ou copie l'adresse<span class="copy-zone">
+      <button class="btn btn--copy" type="button" data-copy="benithooff04@icloud.com">Copier</button>
+    </span></p>
+    <div class="footer__links">
+      <a href="https://www.linkedin.com/in/benitho-ntenda-43b680398" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="https://github.com/NitHo04" target="_blank" rel="noopener">GitHub</a>
+      <a href="mailto:benithooff04@icloud.com">Envoyer un email</a>
+    </div>
+    <p class="footer__legal">
+      <span>Benitho Ntenda · Paris</span>
+      <span>Portfolio personnel, 2026</span>
+    </p>
+  </div>
+</footer>
+<script src="../assets/app.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Atelier d&#x27;automatisation Linux · Benitho Ntenda</title>
+<meta name="description" content="Huit scripts qui surveillent l&#x27;hygiène d&#x27;un serveur, un laboratoire reproductible en une commande, et une planification pour que tout tourne sans intervention.">
+<meta name="author" content="Benitho Ntenda">
+<meta property="og:title" content="Atelier d&#x27;automatisation Linux · Benitho Ntenda">
+<meta property="og:description" content="Huit scripts qui surveillent l&#x27;hygiène d&#x27;un serveur, un laboratoire reproductible en une commande, et une planification pour que tout tourne sans intervention.">
+<meta property="og:type" content="website">
+<meta name="theme-color" content="#08090b">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%2308090b'/%3E%3Ccircle cx='16' cy='16' r='7' fill='%23e0a458'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+<a class="skip" href="#contenu">Aller au contenu</a>
+<header class="site-header" id="top">
+  <div class="wrap site-header__inner">
+    <a class="brand" href="../index.html"><span class="brand__dot"></span>Benitho Ntenda</a>
+    <nav class="site-nav" aria-label="Navigation principale">
+      <a href="../index.html#travaux">Travaux</a>
+      <a href="../index.html#apropos" data-hide>À propos</a>
+      <a href="../index.html#competences" data-hide>Compétences</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<main id="contenu" class="fiche">
+  <div class="wrap">
+    <div class="fiche__head">
+      <div>
+        <p class="fiche__kicker">05 · Systèmes · 2026</p>
+        <h1 class="fiche__title">Atelier d&#x27;automatisation Linux</h1>
+        <p class="fiche__lede">Huit scripts qui surveillent l&#x27;hygiène d&#x27;un serveur, un laboratoire reproductible en une commande, et une planification pour que tout tourne sans intervention.</p>
+      </div>
+      <dl class="specs"><div><dt>Cadre</dt><dd>Module Bash et Shell, Nexa Digital School</dd></div><div><dt>Rôle</dt><dd>Scripts, laboratoire et rapports, seul</dd></div><div><dt>Environnement</dt><dd>Ubuntu, Vagrant, VirtualBox, SSH distant</dd></div><div><dt>Livrable</dt><dd>Dépôt de scripts et deux rapports générés</dd></div></dl>
+    </div>
+
+    <figure class="fiche__figure">
+      <img src="../assets/img/linux.webp" alt="Sortie réelle d&#x27;un script de contrôle : détection d&#x27;une alerte puis journalisation." width="1800" height="441" decoding="async">
+      <figcaption>Sortie réelle d&#x27;un script de contrôle : détection d&#x27;une alerte puis journalisation.</figcaption>
+    </figure>
+
+    <section class="block">
+  <h2 class="block__title">Contexte</h2>
+  <div class="block__body">
+<p>
+  Sur un serveur, les incidents graves viennent rarement d'une attaque sophistiquée.
+  Ils viennent d'un disque plein, d'un service arrêté, d'une sauvegarde jamais
+  testée, d'un compte sans mot de passe ou d'un fichier modifiable par tout le monde.
+  Tout cela se détecte par script.
+</p>
+<p>
+  J'ai traité le laboratoire avant les scripts, pour que chaque script soit écrit dans
+  un environnement réel et pas dans le vide.
+</p>
+</div>
+</section><section class="block">
+  <h2 class="block__title">Les huit contrôles</h2>
+  <div class="block__body">
+<div class="table-wrap">
+  <table>
+    <thead><tr><th>Script</th><th>Ce qu'il contrôle</th><th>Choix de conception</th></tr></thead>
+    <tbody>
+      <tr><td>Santé</td><td>Disque, mémoire, charge contre des seuils</td><td>Seuils en paramètres, pas codés en dur</td></tr>
+      <tr><td>Services</td><td>État des services attendus</td><td>Alerte sans relance automatique : un service qui tombe en boucle doit être regardé</td></tr>
+      <tr><td>Réseau</td><td>Réponse, résolution, ouverture de port</td><td>Garde-fou de périmètre : refuse de sortir de la cible autorisée</td></tr>
+      <tr><td>Sauvegarde</td><td>Archive datée, vérifiée, rotation</td><td>Une sauvegarde non testée n'est pas une sauvegarde</td></tr>
+      <tr><td>Mises à jour</td><td>Correctifs en attente, redémarrage requis</td><td>Le redémarrage requis est signalé, jamais déclenché</td></tr>
+      <tr><td>Authentification</td><td>Échecs de connexion par source</td><td>Agrégation par adresse pour repérer une tentative répétée</td></tr>
+      <tr><td>Comptes</td><td>Privilèges inattendus, permissions ouvertes</td><td>Détecter les dérives, pas seulement les intrusions</td></tr>
+      <tr><td>Nettoyage</td><td>Fichiers temporaires anciens</td><td>Simulation par défaut, suppression sur demande explicite</td></tr>
+    </tbody>
+  </table>
+</div>
+</div>
+</section><section class="block">
+  <h2 class="block__title">Résultat</h2>
+  <div class="block__body">
+<dl class="kpis">
+  <div><dt>Scripts livrés</dt><dd>8 plus un bonus</dd></div>
+  <div><dt>Laboratoire</dt><dd>validé, code 0</dd></div>
+  <div><dt>Défis résolus</dt><dd>24</dd></div>
+</dl>
+<p>
+  Le laboratoire est versionné et sa recette rend un code de sortie nul, ce qui est la
+  définition d'un environnement conforme. Les huit scripts sont écrits, livrés et
+  planifiés, et un journal d'atelier documente les difficultés au fil de l'exécution.
+</p>
+<p>
+  Pour les rapports, j'ai écrit un générateur qui lit la source du document et y
+  injecte les sorties réelles des scripts et les captures correspondantes. Aucune
+  sortie n'est recopiée à la main.
+</p>
+<div class="note">
+  <p>
+    <strong>État exact, sans enjoliver :</strong> au dernier point d'avancement, le
+    laboratoire était terminé et vérifié, les huit scripts écrits et livrés, mais
+    l'exécution complète des huit tâches dans la machine virtuelle restait à
+    finaliser. Les sorties montrées ici sont celles qui existent réellement.
+  </p>
+</div>
+</div>
+</section><section class="block">
+  <h2 class="block__title">Limites</h2>
+  <div class="block__body">
+<ul>
+  <li>Tous les scripts n'avaient pas encore été exécutés sur la cible au dernier point, donc la robustesse en conditions réelles reste partiellement vérifiée.</li>
+  <li>Gestion d'erreurs sommaire : si une dépendance manque, le comportement est prévisible mais peu explicite.</li>
+  <li>Aucune remontée vers un outil de supervision, les alertes restent locales.</li>
+  <li>Un seul système ciblé, Ubuntu. Les autres distributions demanderaient des adaptations.</li>
+</ul>
+</div>
+</section><section class="block">
+  <h2 class="block__title">Ce que j&#x27;en retiens</h2>
+  <div class="block__body">
+<p>
+  Un script de supervision qui corrige tout seul est plus dangereux qu'un script qui
+  signale. Redémarrer automatiquement un service en échec masque un incident au lieu
+  de le traiter. La même logique a guidé le garde-fou du script réseau et la
+  simulation par défaut du nettoyage : par défaut, l'automatisation observe, elle
+  n'agit pas.
+</p>
+<p>
+  Deuxième leçon : faire générer les rapports par un script supprime une tentation.
+  On ne peut pas inventer une sortie qui n'existe pas.
+</p>
+</div>
+</section>
+
+    <div class="block__body" style="padding-block:2rem 0">
+      <ul class="tags"><li>Bash</li><li>systemd</li><li>cron</li><li>Vagrant</li><li>Python</li></ul>
+    </div>
+
+    <nav class="fiche__nav" aria-label="Navigation entre projets">
+      <a href="pssi-valmont.html">← PSSI de la Métropole de Valmont</a>
+      <a href="osint-hibp.html">Fiche outil : Have I Been Pwned →</a>
+    </nav>
+  </div>
+</main>
+<footer class="footer" id="contact">
+  <div class="wrap">
+    <h2 class="footer__title">Travaillons ensemble</h2>
+    <p class="footer__text">
+      Je cherche une alternance ou un stage en cybersécurité, et je prends aussi des
+      projets de design et d'automatisation. Écris-moi, je réponds vite.
+    </p>
+    <a class="mail" href="mailto:benithooff04@icloud.com">benithooff04@icloud.com</a>
+    <p class="mail__hint">Ou copie l'adresse<span class="copy-zone">
+      <button class="btn btn--copy" type="button" data-copy="benithooff04@icloud.com">Copier</button>
+    </span></p>
+    <div class="footer__links">
+      <a href="https://www.linkedin.com/in/benitho-ntenda-43b680398" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="https://github.com/NitHo04" target="_blank" rel="noopener">GitHub</a>
+      <a href="mailto:benithooff04@icloud.com">Envoyer un email</a>
+    </div>
+    <p class="footer__legal">
+      <span>Benitho Ntenda · Paris</span>
+      <span>Portfolio personnel, 2026</span>
+    </p>
+  </div>
+</footer>
+<script src="../assets/app.js" defer></script>
+</body>
+</html>

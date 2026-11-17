@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Service onion auto-hébergé · Benitho Ntenda</title>
+<meta name="description" content="Publier un service web sur le réseau Tor depuis une machine virtuelle, sans ouvrir un seul port entrant. Cinq pièges documentés, quatre qui m&#x27;ont coûté des heures.">
+<meta name="author" content="Benitho Ntenda">
+<meta property="og:title" content="Service onion auto-hébergé · Benitho Ntenda">
+<meta property="og:description" content="Publier un service web sur le réseau Tor depuis une machine virtuelle, sans ouvrir un seul port entrant. Cinq pièges documentés, quatre qui m&#x27;ont coûté des heures.">
+<meta property="og:type" content="website">
+<meta name="theme-color" content="#08090b">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%2308090b'/%3E%3Ccircle cx='16' cy='16' r='7' fill='%23e0a458'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+<a class="skip" href="#contenu">Aller au contenu</a>
+<header class="site-header" id="top">
+  <div class="wrap site-header__inner">
+    <a class="brand" href="../index.html"><span class="brand__dot"></span>Benitho Ntenda</a>
+    <nav class="site-nav" aria-label="Navigation principale">
+      <a href="../index.html#travaux">Travaux</a>
+      <a href="../index.html#apropos" data-hide>À propos</a>
+      <a href="../index.html#competences" data-hide>Compétences</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<main id="contenu" class="fiche">
+  <div class="wrap">
+    <div class="fiche__head">
+      <div>
+        <p class="fiche__kicker">02 · Lab réseau · 2026</p>
+        <h1 class="fiche__title">Service onion auto-hébergé</h1>
+        <p class="fiche__lede">Publier un service web sur le réseau Tor depuis une machine virtuelle, sans ouvrir un seul port entrant. Cinq pièges documentés, quatre qui m&#x27;ont coûté des heures.</p>
+      </div>
+      <dl class="specs"><div><dt>Cadre</dt><dd>Laboratoire personnel</dd></div><div><dt>Rôle</dt><dd>Conception et réalisation seul</dd></div><div><dt>Environnement</dt><dd>VirtualBox, Ubuntu Server, 4 Go, 2 vCPU</dd></div><div><dt>Livrable</dt><dd>Scripts, diagnostic, documentation</dd></div></dl>
+    </div>
+
+    <figure class="fiche__figure fiche__figure--diagram">
+      <img src="../assets/img/tor-schema.svg" alt="Schéma de l&#x27;architecture : le service n&#x27;est joignable que parce que la VM ouvre le canal vers l&#x27;extérieur." decoding="async">
+      <figcaption>Schéma de l&#x27;architecture : le service n&#x27;est joignable que parce que la VM ouvre le canal vers l&#x27;extérieur.</figcaption>
+    </figure>
+
+    <section class="block">
+  <h2 class="block__title">Contexte</h2>
+  <div class="block__body">
+<p>
+  Un service caché Tor est joignable sans que le serveur ait d'adresse IP publique
+  ni de port entrant à exposer. La question de départ : est-ce que je peux publier
+  quelque chose depuis ma machine, derrière une box qui ne redirige rien, sans coût,
+  et le prouver ?
+</p>
+<p>
+  La réponse intéresse la défense : un pare-feu entrant qui bloque tout ne suffit
+  pas si les flux sortants sont libres. C'est exactement comme ça qu'un attaquant
+  maintient un accès persistant.
+</p>
+</div>
+</section><section class="block">
+  <h2 class="block__title">L&#x27;architecture</h2>
+  <div class="block__body">
+<p>
+  Le mécanisme repose sur un renversement : le service n'est joignable que parce que
+  c'est la machine qui sort vers le réseau Tor et maintient le canal ouvert.
+</p>
+<div class="note">
+  <p>
+    Navigateur Tor, puis réseau Tor (trois nœuds et un point de rendez-vous), puis
+    connexion <strong>sortante</strong> initiée par la VM, puis Tor local, puis le
+    service caché qui dirige le port 80 vers 127.0.0.1:8080, puis le serveur
+    applicatif lié à la boucle locale uniquement.
+  </p>
+</div>
+</div>
+</section><section class="block">
+  <h2 class="block__title">Ce que j&#x27;ai fait</h2>
+  <div class="block__body">
+<ol class="steps">
+  <li><strong>Machine virtuelle déclarative.</strong> Disque, mémoire et réseau définis par commandes, pour que le lab soit reproductible et pas cliqué.</li>
+  <li><strong>Installation non supervisée</strong> d'Ubuntu Server avec une étape de configuration passée par l'installateur.</li>
+  <li><strong>Script de publication.</strong> Installation de Tor, répertoire du site, configuration du service caché, redémarrage, affichage de l'adresse.</li>
+  <li><strong>Service verrouillé.</strong> Le serveur HTTP écoute uniquement sur la boucle locale, jamais sur l'interface réseau.</li>
+  <li><strong>Vérification.</strong> Requête à travers un proxy SOCKS Tor et contrôle du code de réponse.</li>
+  <li><strong>Diagnostic.</strong> Un script séparé qui liste les ports en écoute, la configuration active et le journal.</li>
+</ol>
+</div>
+</section><section class="block">
+  <h2 class="block__title">Résultat</h2>
+  <div class="block__body">
+<dl class="kpis">
+  <div><dt>Ports ouverts sur l'hôte</dt><dd>0</dd></div>
+  <div><dt>Coût</dt><dd>0 €</dd></div>
+  <div><dt>Mise en place</dt><dd>environ 25 min</dd></div>
+</dl>
+<p>
+  Le service est joignable depuis un navigateur Tor, confirmé par un code de réponse
+  200 et par le contenu servi. Aucune redirection entrante, aucune règle de pare-feu
+  assouplie, aucune IP publique révélée.
+</p>
+<div class="note">
+  <p>
+    <strong>Choix assumé :</strong> l'adresse onion et les identifiants du lab ne
+    sont pas publiés. Le lab tourne encore, et exposer une adresse ou un accès dans
+    un portfolio public revient à publier une porte ouverte en espérant que personne
+    ne la remarque. La démarche est reproductible, c'est ce qui compte.
+  </p>
+</div>
+</div>
+</section><section class="block">
+  <h2 class="block__title">Les cinq pièges</h2>
+  <div class="block__body">
+<div class="table-wrap">
+  <table>
+    <thead><tr><th>Piège</th><th>Cause réelle</th></tr></thead>
+    <tbody>
+      <tr><td>Démarrer un service dans la post installation de l'installateur</td><td>La commande s'exécute dans un chroot. On ne démarre pas un service dans un chroot, donc l'installation échoue alors que le disque est complet. Une post installation doit rester de la configuration pure.</td></tr>
+      <tr><td>Faire résoudre une adresse onion par le client lui-même</td><td>Les versions récentes refusent, conformément à la RFC 7686, et l'enveloppe proxy ne l'intercepte pas. Il faut laisser le proxy résoudre le nom.</td></tr>
+      <tr><td>Passer une commande complexe à travers SSH depuis Windows</td><td>La couche de citation détruit les guillemets internes et le shell distant reçoit la commande coupée. Envoyer le script par l'entrée standard.</td></tr>
+      <tr><td>Un script préparé sous Windows</td><td>Fins de ligne et locale française cassent tout : le retour chariot est interprété comme une commande. Écrire en LF.</td></tr>
+      <tr><td>Tester un service par un simple test de port</td><td>La redirection NAT accepte la connexion avant que le service existe. Un port qui répond n'est pas une preuve.</td></tr>
+    </tbody>
+  </table>
+</div>
+</div>
+</section><section class="block">
+  <h2 class="block__title">Limites</h2>
+  <div class="block__body">
+<ul>
+  <li>Service statique : aucune surface d'authentification à durcir.</li>
+  <li>Pas de durcissement système poussé, ni mise à jour automatique, ni filtrage applicatif.</li>
+  <li>Aucune mesure de latence à travers le réseau Tor, alors qu'elle varie fortement.</li>
+  <li>Le lab valide la publication d'un service, pas la sécurité d'une application.</li>
+</ul>
+</div>
+</section><section class="block">
+  <h2 class="block__title">Ce que j&#x27;en retiens</h2>
+  <div class="block__body">
+<p>
+  Le geste technique est simple, la compréhension du mécanisme l'est beaucoup moins.
+  La question « pourquoi le NAT suffit ici et pas pour un site classique » force à
+  regarder dans quel sens le flux s'établit, et c'est exactement le raisonnement
+  qu'un pare-feu mal configuré laisse passer.
+</p>
+<p>
+  Deuxième leçon : la documentation des erreurs vaut plus que le résultat. Un script
+  qui marche une fois ne prouve pas la maîtrise. Une cause expliquée, si.
+</p>
+</div>
+</section>
+
+    <div class="block__body" style="padding-block:2rem 0">
+      <ul class="tags"><li>Tor</li><li>Linux</li><li>NAT</li><li>Bash</li><li>Documentation</li></ul>
+    </div>
+
+    <nav class="fiche__nav" aria-label="Navigation entre projets">
+      <a href="audit-brevanne.html">← Audit de vulnérabilité à l&#x27;ingénierie sociale</a>
+      <a href="phishing-gophish.html">Campagne de phishing avec GoPhish →</a>
+    </nav>
+  </div>
+</main>
+<footer class="footer" id="contact">
+  <div class="wrap">
+    <h2 class="footer__title">Travaillons ensemble</h2>
+    <p class="footer__text">
+      Je cherche une alternance ou un stage en cybersécurité, et je prends aussi des
+      projets de design et d'automatisation. Écris-moi, je réponds vite.
+    </p>
+    <a class="mail" href="mailto:benithooff04@icloud.com">benithooff04@icloud.com</a>
+    <p class="mail__hint">Ou copie l'adresse<span class="copy-zone">
+      <button class="btn btn--copy" type="button" data-copy="benithooff04@icloud.com">Copier</button>
+    </span></p>
+    <div class="footer__links">
+      <a href="https://www.linkedin.com/in/benitho-ntenda-43b680398" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="https://github.com/NitHo04" target="_blank" rel="noopener">GitHub</a>
+      <a href="mailto:benithooff04@icloud.com">Envoyer un email</a>
+    </div>
+    <p class="footer__legal">
+      <span>Benitho Ntenda · Paris</span>
+      <span>Portfolio personnel, 2026</span>
+    </p>
+  </div>
+</footer>
+<script src="../assets/app.js" defer></script>
+</body>
+</html>
