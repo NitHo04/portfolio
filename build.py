@@ -207,7 +207,7 @@ def index():
     <div class="wrap">
       <div class="section__head">
         <h2 class="section__title">Création numérique</h2>
-        <p class="section__note">5 projets · 2026</p>
+        <p class="section__note">2 projets · 2026</p>
       </div>
       <p class="section__intro">
         Design imprimé, direction artistique et développement web. Le

@@ -1,6 +1,6 @@
 # Portfolio de Benitho Ntenda
 
-Site statique, sans dépendance, sans serveur. Quatorze projets en trois volets :
+Site statique, sans dépendance, sans serveur. Onze projets en trois volets :
 cybersécurité, applications mobiles, création numérique.
 
 ## Voir le site
@@ -35,7 +35,7 @@ Aucune dépendance à un service tiers n'est nécessaire à l'affichage : ni pol
 script, ni bibliothèque. C'est volontaire, un portfolio doit s'ouvrir même sur un
 réseau filtré.
 
-## Les quatorze projets
+## Les onze projets
 
 | # | Projet | Volet |
 |---|--------|-------|
@@ -48,11 +48,8 @@ réseau filtré.
 | 07 | YokaSon, lecteur de musique et ambiances | Applications |
 | 08 | Le Millionnaire Congolais, jeu de quiz | Applications |
 | 09 | MyMe, espace privé chiffré | Applications |
-| 10 | Affiche et déclinaisons, premier anniversaire | Création |
-| 11 | Série de fonds d'écran | Création |
-| 12 | Runner 3D, jeu de course dans une page | Création |
-| 13 | BOJJ Boutique, boutique de maillots en ligne | Création |
-| 14 | Kessy Noire, personnage IA pour récits à suspense | Création |
+| 10 | Runner 3D, jeu de course dans une page | Création |
+| 11 | BOJJ Boutique, boutique de maillots en ligne | Création |
 
 ## Modifier le contenu
 
