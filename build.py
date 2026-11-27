@@ -26,6 +26,12 @@ def dims(name):
     return f' width="{d["w"]}" height="{d["h"]}"' if d else ""
 
 TALL = {"audit", "osint", "affiche", "garde"}
+ICONS = {"lmc", "myme"}
+
+
+def numero(p):
+    """Numero d'ordre global, calcule : jamais desynchronise du contenu."""
+    return f"{PROJETS.index(p) + 1:02d}"
 
 
 def esc(t):
@@ -50,8 +56,6 @@ def head(titre, description, base):
 <meta property="og:type" content="website">
 <meta name="theme-color" content="#08090b">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%2308090b'/%3E%3Ccircle cx='16' cy='16' r='7' fill='%23e0a458'/%3E%3C/svg%3E">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="{base}assets/style.css">
 </head>
 <body>
@@ -112,6 +116,8 @@ def carte_work(p, i):
     flip = " work--flip" if i % 2 else ""
     if p.get("ext") == "svg":
         cls = "work__media work__media--diagram"
+    elif p["img"] in ICONS:
+        cls = "work__media work__media--icon"
     elif p["img"] in TALL:
         cls = "work__media work__media--tall"
     else:
@@ -123,7 +129,7 @@ def carte_work(p, i):
     <img src="assets/img/{p['img']}.{p.get('ext', 'webp')}" alt="{esc(p['titre'])}"{dims(p['img'])} decoding="async">
   </a>
   <div class="work__body">
-    <p class="work__meta"><b>{p['num']}</b> <span>{esc(p['discipline'])}</span> <span>{p['annee']}</span></p>
+    <p class="work__meta"><b>{numero(p)}</b> <span>{esc(p['discipline'])}</span> <span>{p['annee']}</span></p>
     <h3 class="work__title"><a href="{href}">{esc(p['titre'])}</a></h3>
     <p class="work__lede">{esc(p['lede'])}</p>
     <ul class="tags">{tags}</ul>
@@ -140,6 +146,7 @@ def index():
     )
     facts = "".join(f"<div><dt>{esc(k)}</dt><dd>{esc(v)}</dd></div>" for k, v in SITE["facts"])
     cyber = "".join(carte_work(p, i) for i, p in enumerate(contenu.CYBER))
+    apps = "".join(carte_work(p, i) for i, p in enumerate(contenu.APPS))
     crea = "".join(carte_work(p, i) for i, p in enumerate(contenu.CREA))
 
     return (
@@ -182,6 +189,20 @@ def index():
     </div>
   </section>
 
+  <section class="section" id="applications">
+    <div class="wrap">
+      <div class="section__head">
+        <h2 class="section__title">Applications</h2>
+        <p class="section__note">3 projets · 2026</p>
+      </div>
+      <p class="section__intro">
+        Des applications mobiles réelles, pas des maquettes : React Native et Expo, avec
+        la conception, le code et l'identité visuelle.
+      </p>
+      {apps}
+    </div>
+  </section>
+
   <section class="section" id="creation">
     <div class="wrap">
       <div class="section__head">
@@ -189,7 +210,7 @@ def index():
         <p class="section__note">5 projets · 2026</p>
       </div>
       <p class="section__intro">
-        Design imprimé, direction artistique, montage vidéo et développement web. Le
+        Design imprimé, direction artistique et développement web. Le
         versant visible du même travail : comprendre une contrainte et produire un
         livrable propre.
       </p>
@@ -206,7 +227,7 @@ def index():
         <div class="about__text">
           <p>
             Je suis étudiant en cybersécurité à <strong>Nexa Digital School</strong>, à
-            Paris, et je passe en deuxième année de Bachelor à la rentrée 2026.
+            Paris, et je suis en deuxième année de Bachelor (2026-2027).
             Originaire de la République démocratique du Congo, je suis arrivé en France
             en 2025.
           </p>
@@ -232,13 +253,13 @@ def index():
           <h3>En résumé</h3>
           <dl>
             <dt>Formation</dt>
-            <dd>Bachelor Cybersécurité<small>Nexa Digital School, Paris · 1re année validée, Bac+2 à la rentrée 2026</small></dd>
+            <dd>Bachelor Cybersécurité<small>Nexa Digital School, Paris · 2e année en cours (Bac+2, 2026-2027)</small></dd>
             <dt>Recherche</dt>
             <dd>Alternance ou stage<small>Sécurité opérationnelle, analyse de risques, gouvernance ou test d'intrusion</small></dd>
             <dt>Langues</dt>
             <dd>Français, lingala<small>Anglais technique</small></dd>
             <dt>Également</dt>
-            <dd>Design et automatisation<small>Impression, direction artistique, montage, scripts</small></dd>
+            <dd>Applications et design<small>React Native, identité visuelle, impression, automatisation</small></dd>
           </dl>
         </div>
       </div>
@@ -263,6 +284,14 @@ def index():
         <div class="skill">
           <h3>Défense et gouvernance</h3>
           <ul><li>ISO/IEC 27002</li><li>NIS 2</li><li>RGPD</li><li>RGS</li><li>Analyse de risque</li><li>SPF / DKIM / DMARC</li><li>MFA</li></ul>
+        </div>
+        <div class="skill">
+          <h3>Développement mobile</h3>
+          <ul><li>React Native</li><li>Expo</li><li>expo-router</li><li>TypeScript</li><li>Zustand</li><li>Jest</li><li>i18next</li></ul>
+        </div>
+        <div class="skill">
+          <h3>Cryptographie appliquée</h3>
+          <ul><li>Argon2id</li><li>Chiffrement authentifié</li><li>Stockage protégé</li><li>Biométrie</li><li>Signature sur courbe elliptique</li></ul>
         </div>
         <div class="skill">
           <h3>Création et développement</h3>
@@ -298,6 +327,8 @@ def fiche(p):
     tags = "".join(f"<li>{esc(t)}</li>" for t in p["tags"])
     if p.get("ext") == "svg":
         cls = "fiche__figure fiche__figure--diagram"
+    elif p["img"] in ICONS:
+        cls = "fiche__figure fiche__figure--icon"
     elif p["img"] in TALL:
         cls = "fiche__figure fiche__figure--tall"
     else:
@@ -320,7 +351,7 @@ def fiche(p):
   <div class="wrap">
     <div class="fiche__head">
       <div>
-        <p class="fiche__kicker">{p['num']} · {esc(p['discipline'])} · {p['annee']}</p>
+        <p class="fiche__kicker">{numero(p)} · {esc(p['discipline'])} · {p['annee']}</p>
         <h1 class="fiche__title">{esc(p['titre'])}</h1>
         <p class="fiche__lede">{esc(p['lede'])}</p>
       </div>
@@ -369,7 +400,7 @@ def main():
 
     print(f"index.html et {len(PROJETS)} fiches generees")
     for p in PROJETS:
-        print(f"  {p['num']}  projets/{p['slug']}.html")
+        print(f"  {numero(p)}  projets/{p['slug']}.html")
 
 
 if __name__ == "__main__":

@@ -5,7 +5,31 @@
    dépendance, hors les deux familles de caractères.
    ========================================================================== */
 
-@import url("https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap");
+/* Polices hebergees localement : le site ne depend d'aucun service tiers. */
+@font-face {
+  font-family: "Archivo";
+  font-style: normal;
+  font-weight: 400 800;
+  font-display: swap;
+  src: url("fonts/archivo-latin.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "JetBrains Mono";
+  font-style: normal;
+  font-weight: 400 700;
+  font-display: swap;
+  src: url("fonts/jetbrains-mono-latin.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "Baloo 2";
+  font-style: normal;
+  font-weight: 400 800;
+  font-display: swap;
+  src: url("fonts/baloo-2-latin.woff2") format("woff2");
+}
+
 
 :root {
   /* couleur : neutres très légèrement chauds, un seul accent */
@@ -20,8 +44,9 @@
   --accent: #e0a458;
   --accent-soft: rgba(224, 164, 88, 0.1);
 
-  --font: "Archivo", "Segoe UI", system-ui, -apple-system, sans-serif;
-  --mono: "JetBrains Mono", "Cascadia Mono", Consolas, ui-monospace, monospace;
+  --font: "Baloo 2", "Archivo", "Segoe UI", system-ui, sans-serif;
+  --mono: "Baloo 2", "JetBrains Mono", "Cascadia Mono", Consolas, monospace;
+  --display: "Baloo 2", "Archivo", "Segoe UI", system-ui, sans-serif;
 
   --ease: cubic-bezier(0.23, 1, 0.32, 1);
   --wrap: 78rem;
@@ -49,8 +74,9 @@ body {
   color: var(--fg);
   font-family: var(--font);
   font-size: 1.0625rem;
-  line-height: 1.6;
+  line-height: 1.68;
   font-weight: 400;
+  letter-spacing: 0.002em;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
   overflow-x: hidden;
@@ -192,10 +218,11 @@ a:hover {
 }
 
 .hero__title {
-  font-size: clamp(3.4rem, 13.5vw, 9.5rem);
-  line-height: 0.86;
-  letter-spacing: -0.045em;
-  font-weight: 800;
+  font-family: var(--display);
+  font-size: clamp(2.9rem, 11.5vw, 8rem);
+  line-height: 0.98;
+  letter-spacing: -0.015em;
+  font-weight: 700;
   margin: 0;
   text-wrap: balance;
 }
@@ -373,9 +400,10 @@ a:hover {
 }
 
 .section__title {
-  font-size: clamp(1.6rem, 4vw, 2.6rem);
-  line-height: 1.06;
-  letter-spacing: -0.03em;
+  font-family: var(--display);
+  font-size: clamp(1.7rem, 4vw, 2.6rem);
+  line-height: 1.12;
+  letter-spacing: -0.005em;
   font-weight: 700;
   margin: 0;
   text-wrap: balance;
@@ -462,10 +490,11 @@ a.work__media:hover img {
 }
 
 .work__title {
-  font-size: clamp(1.35rem, 2.9vw, 2rem);
-  line-height: 1.1;
-  letter-spacing: -0.025em;
-  font-weight: 700;
+  font-family: var(--display);
+  font-size: clamp(1.3rem, 2.8vw, 1.9rem);
+  line-height: 1.18;
+  letter-spacing: 0;
+  font-weight: 600;
   margin: 0 0 0.85rem;
   text-wrap: balance;
 }
@@ -561,6 +590,7 @@ a.work__more:hover::after {
 }
 
 .about__panel h3 {
+  font-family: var(--mono);
   font-family: var(--mono);
   font-size: 0.7rem;
   letter-spacing: 0.12em;
@@ -681,10 +711,11 @@ a.work__more:hover::after {
 }
 
 .fiche__title {
-  font-size: clamp(2rem, 5.5vw, 3.6rem);
-  line-height: 1.02;
-  letter-spacing: -0.035em;
-  font-weight: 800;
+  font-family: var(--display);
+  font-size: clamp(1.9rem, 5vw, 3.4rem);
+  line-height: 1.08;
+  letter-spacing: -0.01em;
+  font-weight: 700;
   margin: 0 0 1.1rem;
   text-wrap: balance;
 }
@@ -805,7 +836,8 @@ a.work__more:hover::after {
 }
 
 .block__body h3 {
-  font-size: 1.05rem;
+  font-family: var(--display);
+  font-size: 1.1rem;
   font-weight: 600;
   letter-spacing: -0.01em;
   margin-top: 1.75rem;
@@ -890,9 +922,10 @@ a.work__more:hover::after {
 
 .kpis dd {
   margin: 0;
-  font-size: 1.15rem;
+  font-family: var(--display);
+  font-size: 1.2rem;
   font-weight: 600;
-  letter-spacing: -0.02em;
+  letter-spacing: 0;
   color: var(--fg);
 }
 
@@ -988,10 +1021,11 @@ td strong {
 }
 
 .footer__title {
-  font-size: clamp(1.8rem, 5vw, 3.2rem);
-  line-height: 1.02;
-  letter-spacing: -0.035em;
-  font-weight: 800;
+  font-family: var(--display);
+  font-size: clamp(1.8rem, 5vw, 3rem);
+  line-height: 1.1;
+  letter-spacing: -0.01em;
+  font-weight: 700;
   margin: 0 0 1rem;
   text-wrap: balance;
 }
@@ -1183,4 +1217,96 @@ td strong {
   object-fit: contain;
   object-position: center;
   max-height: 40rem;
+}
+
+
+/* --- Icones d'application ------------------------------------------------ */
+.work__media--icon img,
+.fiche__figure--icon img {
+  object-fit: contain;
+  padding: clamp(1rem, 4vw, 3rem);
+  max-height: 24rem;
+  background: var(--bg-1);
+}
+
+
+/* --- Baloo 2 partout : les etiquettes demandent un traitement adapte ------
+   Une police ronde et large en majuscules devient pateuse si on garde
+   l'interlettrage d'une monospace. On resserre et on remonte d'un cran les
+   tailles les plus petites. */
+body {
+  font-variant-ligatures: none;
+}
+
+.brand,
+.site-nav,
+.hero__kicker,
+.hero__facts dt,
+.section__note,
+.work__meta,
+.work__more,
+.btn,
+.btn--copy,
+.skill h3,
+.fiche__kicker,
+.specs dt,
+.block__title,
+.kpis dt,
+.steps li::before,
+.fiche__nav,
+.mail__hint,
+.mail,
+.footer__legal,
+.footer__links,
+.shot figcaption,
+.tags li,
+.about__panel h3,
+th {
+  letter-spacing: 0.025em;
+  font-weight: 600;
+}
+
+.hero__kicker,
+.fiche__kicker,
+.block__title,
+.skill h3,
+.about__panel h3 {
+  font-size: 0.82rem;
+}
+
+.site-nav,
+.work__meta,
+.btn,
+.fiche__nav,
+.footer__links,
+.mail {
+  font-size: 0.86rem;
+}
+
+.section__note,
+.hero__facts,
+.work__more,
+.steps li::before,
+.mail__hint,
+.footer__legal,
+.shot figcaption,
+.tags li,
+.specs dt,
+.kpis dt,
+.brand {
+  font-size: 0.8rem;
+}
+
+th {
+  font-size: 0.76rem;
+}
+
+/* les chiffres des resultats gardent leur poids */
+.kpis dd {
+  font-weight: 700;
+}
+
+/* la table numerique reste stable */
+.steps li::before {
+  font-variant-numeric: tabular-nums;
 }

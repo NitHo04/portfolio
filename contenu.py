@@ -14,32 +14,23 @@ SITE = {
     "linkedin": "https://www.linkedin.com/in/benitho-ntenda-43b680398",
     "github": "https://github.com/NitHo04",
     "description": (
-        "Portfolio de Benitho Ntenda, étudiant en cybersécurité à Nexa Digital School "
-        "et créateur numérique. Projets documentés : audit de risque, lab Tor, "
-        "simulation de phishing, PSSI, automatisation Linux, OSINT, design imprimé."
+        "Portfolio de Benitho Ntenda, étudiant en cybersécurité à Nexa Digital School. "
+        "Projets documentés : audit de risque, lab Tor, simulation de phishing, PSSI, "
+        "OSINT, applications mobiles React Native, cryptographie appliquée, design."
     ),
     "kicker": "Portfolio 2026 · Paris",
     "lede": (
         "Je documente ce que je construis, méthode comprise. "
-        "<em>Onze projets</em>, du lab réseau jusqu'à l'affiche imprimée en 300 dpi."
+        "<em>Quatorze projets</em>, du lab réseau jusqu'à la boutique en ligne."
     ),
     "facts": [
         ("Statut", "Alternance ou stage"),
         ("Formation", "Nexa Digital School"),
-        ("Niveau", "Bac+2 à la rentrée 2026"),
+        ("Niveau", "2e année de Bachelor (2026-2027)"),
         ("Basé à", "Paris, France"),
     ],
     "strip": [("jeu", "Runner 3D, jeu de course jouable dans le navigateur")],
 }
-
-# --------------------------------------------------------------------------- #
-# Blocs reutilisables
-# --------------------------------------------------------------------------- #
-
-def l(img, cap, cls=""):
-    """Figure de fiche."""
-    return (img, cap, cls)
-
 
 # --------------------------------------------------------------------------- #
 # Cybersécurité
@@ -823,142 +814,6 @@ CREA = [
         ],
     },
     {
-        "slug": "montage-video",
-        "num": "09",
-        "discipline": "Montage vidéo",
-        "annee": "2026",
-        "titre": "Montage vidéo d'un événement familial",
-        "lede": (
-            "Un diaporama animé de seize plans, habillé, sonorisé et rendu, avec des "
-            "planches de contrôle avant livraison."
-        ),
-        "img": "video",
-        "img_caption": "Carton de titre du montage, fond flouté et typographie centrée.",
-        "tags": ["Montage", "Habillage", "Rythme", "Contrôle qualité"],
-        "specs": [
-            ("Cadre", "Commande familiale"),
-            ("Rôle", "Montage et habillage"),
-            ("Livrable", "Vidéo MP4, seize plans"),
-            ("Contrôles", "Planches de vérification"),
-        ],
-        "blocs": [
-            ("Contexte", """
-<p>
-  Un événement de famille, beaucoup de photos prises par plusieurs personnes, et une
-  vidéo à produire pour que l'ensemble se regarde au lieu de se feuilleter. Le
-  problème est un problème de rythme : trop lent on s'ennuie, trop rapide on ne
-  reconnaît personne.
-</p>
-"""),
-            ("Ce que j'ai fait", """
-<ol class="steps">
-  <li><strong>Sélection et ordre.</strong> Tri des photos et construction d'une progression : carton d'ouverture, portraits, scènes de groupe, moments, carton de clôture.</li>
-  <li><strong>Habillage.</strong> Chaque photo posée dans un cadre, sur un fond flouté de la même image pour éviter les bandes noires et garder la cohérence chromatique.</li>
-  <li><strong>Cartons typographiques.</strong> Ouverture et fermeture avec le nom de l'événement et du couple, typographie centrée, pas de fioriture.</li>
-  <li><strong>Bande son.</strong> Piste audio montée à la durée, avec les points de coupe calés sur les changements de séquence.</li>
-  <li><strong>Contrôle qualité.</strong> Planches de vignettes générées pour vérifier d'un coup d'œil l'ensemble des plans avant rendu final.</li>
-  <li><strong>Rendu</strong> en MP4, avec vérification de la durée et de la synchronisation.</li>
-</ol>
-"""),
-            ("Résultat", """
-<dl class="kpis">
-  <div><dt>Plans montés</dt><dd>16</dd></div>
-  <div><dt>Livrable</dt><dd>1 vidéo MP4</dd></div>
-  <div><dt>Contrôles</dt><dd>planches de vignettes</dd></div>
-</dl>
-<p>
-  La vidéo existe en un fichier unique, prêt à être partagé tel quel, sans logiciel
-  particulier pour la lire.
-</p>
-"""),
-            ("Limites", """
-<ul>
-  <li>Seize plans pour un événement entier, c'est court : beaucoup de photos n'ont pas été retenues.</li>
-  <li>Les photos n'ont pas toutes été prises dans les mêmes conditions de lumière, et l'étalonnage reste léger.</li>
-  <li>Pas de sous-titres ni de version courte, qui auraient aidé au partage sur mobile.</li>
-  <li>Le rendu n'a pas été vérifié sur plusieurs lecteurs, seulement sur le mien.</li>
-</ul>
-"""),
-            ("Ce que ça démontre", """
-<p>
-  Monter, ce n'est pas aligner des images : c'est décider d'un rythme et d'un
-  habillage qui rendent l'ensemble regardable. Et c'est accepter de couper beaucoup
-  pour garder l'essentiel.
-</p>
-<p>
-  Le réflexe de contrôle qualité compte autant : générer une planche de tous les
-  plans permet de repérer une faute de cadrage avant le rendu, pas après.
-</p>
-"""),
-        ],
-    },
-    {
-        "slug": "page-de-garde",
-        "num": "10",
-        "discipline": "Automatisation documentaire",
-        "annee": "2026",
-        "titre": "Page de garde universitaire générée par script",
-        "lede": (
-            "Une page de garde conforme à une charte institutionnelle, produite par un "
-            "script paramétrable plutôt que retapée à chaque travail."
-        ),
-        "img": "garde",
-        "img_caption": "Page de garde générée, en-tête officiel, logo et bloc d'identification.",
-        "tags": ["Python", "Document", "Charte", "Gabarit"],
-        "specs": [
-            ("Cadre", "Service rendu à une étudiante"),
-            ("Rôle", "Script et gabarit"),
-            ("Sortie", "Document échangeable et modifiable"),
-            ("Paramètres", "Filière, cours, professeur"),
-        ],
-        "blocs": [
-            ("Contexte", """
-<p>
-  Un travail universitaire doit commencer par une page de garde au format imposé :
-  en-tête du ministère, nom de l'université, logo, filière, intitulé du cours,
-  mention du travail, nom de l'étudiant, nom du professeur, année académique.
-</p>
-<p>
-  Retapée à la main, cette page est une source d'erreurs et de perte de temps, et le
-  format se dégrade d'un travail à l'autre. La demande était donc : la même page, en
-  changeant seulement ce qui change.
-</p>
-"""),
-            ("Ce que j'ai fait", """
-<ul>
-  <li><strong>Gabarit complet</strong> avec en-tête institutionnel, logo, filière, intitulé, bloc de réalisation et année, aligné sur le document d'origine.</li>
-  <li><strong>Paramétrage.</strong> Les éléments variables sont regroupés en tête de script : changer de cours ou de professeur ne demande aucune retouche de mise en forme.</li>
-  <li><strong>Sortie modifiable.</strong> Le document produit reste éditable, pour que l'étudiante puisse corriger un détail sans revenir au code.</li>
-  <li><strong>Respect de la charte.</strong> Tailles, graisses et alignements reproduits à l'identique, y compris les cas où le document d'origine était approximatif.</li>
-</ul>
-"""),
-            ("Résultat", """
-<p>
-  Une page de garde au format exact, régénérable en une commande pour n'importe quel
-  cours. Le temps passé sur la mise en forme tombe à zéro, et le risque de faute de
-  frappe dans un nom officiel aussi.
-</p>
-"""),
-            ("Limites", """
-<ul>
-  <li>Le gabarit est fidèle à un document précis : une autre université demanderait un autre gabarit.</li>
-  <li>Pas de vérification automatique du rendu, la page a été contrôlée visuellement.</li>
-  <li>Le script ne gère qu'une page, pas la structure complète du document.</li>
-</ul>
-"""),
-            ("Ce que ça démontre", """
-<p>
-  Repérer une tâche répétitive, la formaliser en gabarit, et rendre les variables
-  explicites au lieu de les disperser dans la mise en forme.
-</p>
-<p>
-  C'est la même logique que pour un rapport technique ou un runbook : ce qui se
-  répète doit être écrit une fois, proprement.
-</p>
-"""),
-        ],
-    },
-    {
         "slug": "jeu-runner-3d",
         "num": "11",
         "discipline": "Développement web",
@@ -1023,6 +878,400 @@ CREA = [
 """),
         ],
     },
+    {
+        "slug": "bojj-boutique",
+        "num": "13",
+        "discipline": "Site e-commerce",
+        "annee": "2026",
+        "titre": "BOJJ Boutique, une boutique de maillots en ligne",
+        "lede": (
+            "Un site e-commerce complet en HTML, CSS et JavaScript vanilla : catalogue, "
+            "fiche produit, panier, checkout simulé et compte client. 125 boutons câblés, "
+            "aucun bouton mort, et le site est en ligne."
+        ),
+        "img": "bojj",
+        "img_caption": "La page d'accueil de BOJJ Boutique, déployée sur Vercel.",
+        "tags": ["HTML / CSS / JavaScript", "E-commerce", "UI", "Déploiement", "Audit"],
+        "specs": [
+            ("Cadre", "Projet personnel"),
+            ("Rôle", "Design, développement et déploiement"),
+            ("Pile", "HTML, CSS et JavaScript vanilla, une page, sans framework"),
+            ("En ligne", "bojj-boutique.vercel.app"),
+        ],
+        "blocs": [
+            ("Contexte", """
+<p>
+  Une boutique de maillots de clubs et de sélections, pensée pour le public de la
+  RDC. Le design venait d'un brief importé ; le travail a été de l'implémenter
+  vraiment, écran par écran, sans framework et sans backend, jusqu'à une version
+  publique.
+</p>
+<p>
+  La contrainte posée était simple à énoncer et exigeante à tenir : <strong>tous les
+  boutons du site doivent faire quelque chose</strong>. Un site de démonstration où
+  la moitié des liens ne répond pas ne démontre rien.
+</p>
+"""),
+            ("Ce que j'ai fait", """
+<ul>
+  <li><strong>Dix pages fonctionnelles</strong> : accueil, catalogue, fiche produit, checkout, compte client, paiements, à propos, livraison, contact et les modales du pied de page.</li>
+  <li><strong>Navigation et préférences</strong> : sélecteur de langue français/anglais, devises USD, CDF et EUR.</li>
+  <li><strong>Catalogue</strong> : filtres par taille, pagination, neuf produits codés en dur.</li>
+  <li><strong>Fiche produit</strong> : galerie, choix de la taille et de la version, quantité, onglets description, guide des tailles, livraison et avis, avec recalcul du total en temps réel.</li>
+  <li><strong>Checkout</strong> : changement de pays, édition d'adresse, code promo, choix du moyen de paiement (carte, PayPal, Apple Pay, Mobile Money) et confirmation de commande.</li>
+  <li><strong>Mini-panier et wishlist</strong> : ouverture, fermeture et compteur dynamique, cœur cliquable partout.</li>
+  <li><strong>Validation automatique</strong> : HTML vérifié par parseur, JavaScript par node --check, et clic simulé sur tous les boutons avec jsdom (zéro erreur runtime).</li>
+  <li><strong>Déploiement</strong> : en ligne sur Vercel.</li>
+</ul>
+"""),
+            ("Résultat", """
+<dl class="kpis">
+  <div><dt>Boutons audités</dt><dd>125</dd></div>
+  <div><dt>Boutons morts</dt><dd>0</dd></div>
+  <div><dt>Produits au catalogue</dt><dd>9</dd></div>
+</dl>
+<p>
+  Le site se parcourt de bout en bout, du catalogue à la confirmation de commande,
+  avec un panier qui calcule, une wishlist qui mémorise la sélection pendant la
+  visite et un checkout qui vérifie chaque étape.
+</p>
+"""),
+            ("Limites", """
+<ul>
+  <li><strong>Aucun paiement réel</strong> : le bouton « Payer » simule une confirmation, aucune transaction bancaire n'a lieu.</li>
+  <li>Catalogue statique de neuf produits, sans base de données ni administration.</li>
+  <li>Le panier et la wishlist ne persistent pas entre les rechargements, faute de stockage local ou de backend.</li>
+  <li>Pas de compte client réel : la page « Mon compte » est une maquette avec des données d'exemple.</li>
+  <li>Newsletter et formulaire de contact valident la saisie mais n'envoient rien.</li>
+  <li>Le contenu anglais n'est pas traduit : la bascule affiche un message.</li>
+</ul>
+"""),
+            ("Ce que ça démontre", """
+<p>
+  Mener un site e-commerce complet jusqu'à une version en ligne : design, code,
+  déploiement, et surtout la discipline de câbler chaque contrôle puis de le
+  vérifier automatiquement.
+</p>
+<p>
+  Et une leçon de produit : une démo e-commerce ne se juge pas sur la beauté du
+  visuel, mais sur ce qui se passe quand on clique. Ici, tout se passe.
+</p>
+"""),
+        ],
+    },
+    {
+        "slug": "kessy-noire",
+        "num": "14",
+        "discipline": "Contenu & IA",
+        "annee": "2026",
+        "titre": "Kessy Noire, un personnage IA pour des récits à suspense",
+        "lede": (
+            "Un projet de contenu TikTok : un personnage féminin fictif, des scripts "
+            "de récits à cliffhanger, une chaîne de production IA et un plan de "
+            "lancement réglé sur 14 jours."
+        ),
+        "img": "kessy",
+        "img_caption": "Couverture du projet Kessy Noire, dessinée avec ce même portfolio.",
+        "tags": ["TikTok", "Personnage IA", "Script", "ElevenLabs", "Kling", "CapCut"],
+        "specs": [
+            ("Cadre", "Projet personnel"),
+            ("Rôle", "Personnage, scripts et production"),
+            ("Outils", "ElevenLabs, ChatGPT, Kling, CapCut"),
+            ("Format", "Vidéos verticales 1080 x 1920"),
+        ],
+        "blocs": [
+            ("Contexte", """
+<p>
+  Les récits à suspense sont un format très lu sur TikTok, mais beaucoup de comptes
+  reposent sur la même recette anonyme. L'idée de Kessy Noire : donner au format un
+  <strong>personnage identifiable</strong>, entièrement fictif et généré par IA, et
+  le tenir avec une cadence et des règles de production strictes.
+</p>
+<p>
+  La contrainte de départ : aucune caméra, aucun visage réel, un budget nul. Tout
+  doit tenir dans une chaîne d'outils IA et du montage.
+</p>
+"""),
+            ("Ce que j'ai fait", """
+<ul>
+  <li><strong>Identité du personnage</strong> : nom, biographie courte, voix, univers visuel et règles de cohérence d'une vidéo à l'autre.</li>
+  <li><strong>Scripts</strong> : structure de récit en trois temps, première coupe avant la seconde 2, cliffhanger final, textes à l'écran synchronisés.</li>
+  <li><strong>Prompts de production</strong> : images de personnage verrouillées par référence, animations courtes, cohérence des couleurs.</li>
+  <li><strong>Chaîne de production</strong> : voix off générée, images IA, animations, montage CapCut avec sous-titres et export sans filigrane.</li>
+  <li><strong>Plan de lancement de 14 jours</strong> : stock de plusieurs vidéos avant diffusion, triple publication TikTok, Shorts et Reels, commentaires limités à une plage horaire, règle du flop et variantes de hook.</li>
+  <li><strong>Conformité</strong> : label de contenu généré par IA sur chaque publication, sans exception.</li>
+</ul>
+"""),
+            ("Résultat", """
+<dl class="kpis">
+  <div><dt>Plateformes visées</dt><dd>3</dd></div>
+  <div><dt>Plan de lancement</dt><dd>14 jours</dd></div>
+  <div><dt>Vidéos en stock avant lancement</dt><dd>4</dd></div>
+</dl>
+<p>
+  Le projet est en préparation : le personnage, les scripts, les prompts et le
+  planning sont écrits et la chaîne de production est rodée. Aucune audience
+  n'existe encore, et je préfère l'écrire que l'inventer.
+</p>
+"""),
+            ("Limites", """
+<ul>
+  <li>Projet en phase de préparation : aucun résultat d'audience à présenter.</li>
+  <li>Dépendance aux modèles IA pour la voix et les visuels, donc des questions de coût et de disponibilité.</li>
+  <li>L'utilisation d'un personnage IA doit rester transparente : le label est obligatoire, ce n'est pas un détail.</li>
+  <li>La cadence de publication est exigeante et suppose une production régulière.</li>
+</ul>
+"""),
+            ("Ce que ça démontre", """
+<p>
+  Construire un système de production de contenu, pas seulement des vidéos : un
+  personnage cohérent, des scripts formatés, une chaîne d'outils, un calendrier et
+  des règles de décision écrites avant le lancement.
+</p>
+<p>
+  C'est aussi une application concrète de l'IA : orchestrer plusieurs outils pour
+  produire un livrable cohérent, ce qui est exactement ce que je fais dans mes
+  projets techniques.
+</p>
+"""),
+        ],
+    },
 ]
 
-PROJETS = CYBER + CREA
+
+# --------------------------------------------------------------------------- #
+# Applications mobiles
+# --------------------------------------------------------------------------- #
+
+APPS = [
+    {
+        "slug": "yokason",
+        "num": "07",
+        "discipline": "Application mobile",
+        "annee": "2026",
+        "titre": "YokaSon, un lecteur de musique et ses ambiances",
+        "lede": (
+            "Une application musicale complète en React Native : cinquante-trois "
+            "écrans, neuf ambiances illustrées et une identité de marque déclinée."
+        ),
+        "img": "yoka",
+        "img_caption": "L'ambiance « nightdrive », l'une des neuf illustrations d'ambiance de l'application.",
+        "tags": ["React Native", "Expo", "Audio", "Identité de marque"],
+        "specs": [
+            ("Cadre", "Projet personnel"),
+            ("Rôle", "Conception, développement et identité visuelle"),
+            ("Pile", "Expo 54, React Native 0.81, expo-router"),
+            ("État", "En développement actif"),
+        ],
+        "blocs": [
+            ("Contexte", """
+<p>
+  YokaSon est une application de musique pour Android et iOS. Le point de départ
+  n'était pas d'ajouter un lecteur de plus, mais de répondre à une question simple :
+  une application de musique peut-elle changer ce qu'on écoute selon le moment, sans
+  demander à l'utilisateur de construire des playlists à la main ?
+</p>
+<p>
+  D'où le choix des <strong>ambiances</strong> : étudier, se réveiller, rouler de nuit,
+  faire la fête, se relaxer, dormir, faire du sport, voyager. Chacune a son
+  illustration et son orientation musicale.
+</p>
+"""),
+            ("Ce que j'ai fait", """
+<ul>
+  <li><strong>Architecture de navigation complète.</strong> Quatre onglets principaux, puis des écrans dédiés pour un album, un artiste, un genre et une playlist, tous adressables par URL avec le routeur d'Expo.</li>
+  <li><strong>Moteur de lecture audio</strong> avec file d'attente, gestion de l'arrière-plan et contrôles système.</li>
+  <li><strong>Recherche et bibliothèque</strong> sur des listes virtualisées, pour rester fluide avec de grands catalogues.</li>
+  <li><strong>Réglages complets</strong> : apparence et thèmes, audio, compte, services connectés, catalogues avancés, couvertures animées, confidentialité publicitaire, mentions légales.</li>
+  <li><strong>Neuf ambiances illustrées</strong>, chacune avec son visuel plein écran.</li>
+  <li><strong>Identité de marque</strong> : logo égaliseur, déclinaisons de bannière comparées côte à côte, versions transparentes et monochromes.</li>
+  <li><strong>Accès premium</strong> protégé par une clé signée sur courbe elliptique, plutôt qu'un simple booléen stocké sur l'appareil.</li>
+</ul>
+"""),
+            ("Résultat", """
+<dl class="kpis">
+  <div><dt>Écrans</dt><dd>53</dd></div>
+  <div><dt>Ambiances</dt><dd>9</dd></div>
+  <div><dt>Fichiers de test</dt><dd>228</dd></div>
+</dl>
+<p>
+  Le projet compte 56 fichiers d'écran dans son dossier de routes et 646 fichiers dans
+  le dossier applicatif. C'est de loin le code le plus volumineux que j'aie écrit, et
+  celui qui m'a le plus appris sur la structure d'une application réelle.
+</p>
+"""),
+            ("Limites", """
+<ul>
+  <li>Surface de maintenance large : beaucoup de fonctionnalités dans une seule application.</li>
+  <li>Les fichiers de test sont nombreux, mais je n'ai pas de mesure de couverture publiée.</li>
+  <li>L'identité visuelle n'est pas arbitrée : plusieurs variantes de bannière cohabitent encore.</li>
+  <li>Aucun test de performance sur un appareil d'entrée de gamme, alors que le rendu audio et les listes longues y sont sensibles.</li>
+</ul>
+"""),
+            ("Ce que ça démontre", """
+<p>
+  Concevoir et tenir une application mobile complète : navigation imbriquée, gestion
+  d'état, audio en arrière-plan, thèmes, internationalisation, et une identité
+  visuelle qui tient sur neuf déclinaisons.
+</p>
+<p>
+  Et une décision de sécurité que peu d'applications de cette taille prennent : un
+  accès premium vérifié par signature cryptographique, pas par un indicateur local
+  qu'un utilisateur curieux pourrait modifier.
+</p>
+"""),
+        ],
+    },
+    {
+        "slug": "millionnaire-congolais",
+        "num": "08",
+        "discipline": "Jeu mobile",
+        "annee": "2026",
+        "titre": "Le Millionnaire Congolais, jeu de quiz",
+        "lede": (
+            "Un jeu de culture générale congolaise : parcours d'accueil, quatre onglets, "
+            "partie à niveaux, classement, badges et historique."
+        ),
+        "img": "lmc",
+        "img_caption": "L'icône de l'application reprend la bande or et l'étoile du drapeau congolais.",
+        "tags": ["React Native", "Expo", "Zustand", "Game design"],
+        "specs": [
+            ("Cadre", "Projet personnel"),
+            ("Rôle", "Conception et développement"),
+            ("Pile", "Expo 58, React Native 0.88, Zustand"),
+            ("État", "Jouable, en développement"),
+        ],
+        "blocs": [
+            ("Contexte", """
+<p>
+  Le quiz à niveaux est un format connu, presque usé. L'idée ici était de le
+  réancrer : des questions sur la culture, l'histoire et les réalités congolaises, une
+  progression qui récompense la régularité plutôt que la chance, et une identité
+  visuelle qui ne ressemble pas à un jeu générique.
+</p>
+"""),
+            ("Ce que j'ai fait", """
+<ul>
+  <li><strong>Parcours d'accueil en trois étapes</strong> : identité, niveau de départ, présentation. Il conditionne l'expérience et évite de poser les mêmes questions à tout le monde.</li>
+  <li><strong>Quatre onglets</strong> : accueil, apprendre, jouer, classement, plus un profil.</li>
+  <li><strong>Moteur de partie</strong> avec progression par paliers, écran de résultat, historique des parties et modes de jeu.</li>
+  <li><strong>Contenu structuré en données</strong> : catégories et badges séparés du code d'affichage, pour pouvoir enrichir le jeu sans y toucher.</li>
+  <li><strong>Identité visuelle</strong> dérivée du drapeau congolais : bleu ciel, bande or, étoile, avec une déclinaison en icône et écran de démarrage.</li>
+</ul>
+"""),
+            ("Résultat", """
+<dl class="kpis">
+  <div><dt>Écrans</dt><dd>15</dd></div>
+  <div><dt>Onglets</dt><dd>4</dd></div>
+  <div><dt>Modules de données</dt><dd>catégories et badges</dd></div>
+</dl>
+<p>
+  L'application se lance, se parcourt et se joue de bout en bout, avec un état global
+  géré proprement et un historique persistant.
+</p>
+"""),
+            ("Limites", """
+<ul>
+  <li>Le contenu des questions reste limité : la qualité d'un quiz tient à sa base de questions, pas à son interface.</li>
+  <li>Le moteur de partie n'a pas de test automatisé, alors que c'est la partie la plus logique du projet.</li>
+  <li>Pas de serveur, donc le classement reste local : il ne compare personne.</li>
+  <li>Pas encore de build de distribution préparé pour les magasins.</li>
+</ul>
+"""),
+            ("Ce que ça démontre", """
+<p>
+  Une boucle de jeu complète, du premier lancement à l'écran de résultat, avec un état
+  partagé entre les onglets et un contenu séparé du code.
+</p>
+<p>
+  Et le sens de l'identité : reprendre un symbole national et en faire un système
+  graphique cohérent, plutôt que plaquer un thème par défaut.
+</p>
+"""),
+        ],
+    },
+    {
+        "slug": "myme",
+        "num": "09",
+        "discipline": "Application de sécurité",
+        "annee": "2026",
+        "titre": "MyMe, un espace privé chiffré dans une application ordinaire",
+        "lede": (
+            "Une application de confidentialité : interface publique banale, espace privé "
+            "derrière un code secret et la biométrie, moteur cryptographique testé."
+        ),
+        "img": "myme",
+        "img_caption": "L'icône de MyMe : un monogramme neutre, volontairement sans rapport avec la sécurité.",
+        "tags": ["Cryptographie", "React Native", "Tests", "Sécurité mobile"],
+        "specs": [
+            ("Cadre", "Projet personnel"),
+            ("Rôle", "Conception, cryptographie et développement"),
+            ("Pile", "Expo 58, React Native 0.88, TypeScript strict"),
+            ("État", "Étape 3, authentification en place"),
+        ],
+        "blocs": [
+            ("Contexte", """
+<p>
+  Une application de confidentialité a un problème que les autres n'ont pas : son
+  existence même est une information. Un téléphone qu'on ouvre volontairement devant
+  quelqu'un ne doit rien laisser paraître.
+</p>
+<p>
+  D'où le principe de MyMe : une interface publique ordinaire au premier regard, et un
+  espace privé chiffré derrière une authentification. Le nom, l'icône et l'écran
+  d'accueil sont volontairement neutres.
+</p>
+"""),
+            ("Ce que j'ai fait", """
+<ul>
+  <li><strong>Moteur cryptographique</strong> bâti sur des bibliothèques auditées : chiffrement authentifié, dérivation de clé, hachage, aléa fourni par le système.</li>
+  <li><strong>Espaces privés indépendants</strong> : plusieurs espaces étanches, chacun avec son code, sans qu'un espace puisse révéler l'existence d'un autre.</li>
+  <li><strong>Authentification</strong> par code secret, biométrie adossée au stockage protégé de l'appareil, verrouillage automatique et limitation des tentatives.</li>
+  <li><strong>259 tests automatisés</strong> sur le moteur, écrits avant l'interface, avec des vecteurs de test connus.</li>
+  <li><strong>Documentation d'architecture et de sécurité</strong> : modèle de menace, choix cryptographiques, ce qui est protégé et ce qui ne l'est pas.</li>
+  <li><strong>Internationalisation et thèmes</strong> dès le départ, pour ne pas les rétroficer après coup.</li>
+</ul>
+"""),
+            ("Résultat", """
+<dl class="kpis">
+  <div><dt>Tests automatisés</dt><dd>259</dd></div>
+  <div><dt>Fichiers sources</dt><dd>74</dd></div>
+  <div><dt>Étape</dt><dd>3 sur 6</dd></div>
+</dl>
+<p>
+  Le socle technique, l'identité visuelle, les thèmes, l'internationalisation et
+  l'authentification sont en place, avec la création d'espaces privés et la biométrie.
+</p>
+<div class="note">
+  <p>
+    <strong>Un point bloquant, documenté plutôt que masqué :</strong> la dérivation de
+    clé Argon2id en JavaScript pur coûte environ 35 secondes sur l'émulateur aux
+    paramètres de production. Le calcul doit passer en natif. C'est le genre de mesure
+    qu'on préfère trouver soi même avant qu'un utilisateur ne la trouve.
+  </p>
+</div>
+"""),
+            ("Limites", """
+<ul>
+  <li>Aucun coffre-fort de fichiers n'existe encore : c'est l'objet des étapes suivantes.</li>
+  <li>La dérivation Argon2id reste trop lente en JavaScript, en attente du passage en natif.</li>
+  <li>Le modèle de menace couvre la perte ou le vol de l'appareil, pas un appareil compromis avec privilèges système.</li>
+  <li>Pas de build de production signé, donc aucune validation sur appareil physique pour l'instant.</li>
+</ul>
+"""),
+            ("Ce que ça démontre", """
+<p>
+  Concevoir de la sécurité côté client pour de vrai : choisir des primitives éprouvées
+  plutôt que les inventer, écrire les tests avant l'interface, mesurer ce qui coûte
+  cher, et documenter ce qui ne marche pas encore.
+</p>
+<p>
+  C'est le projet le plus proche du métier que je vise, et celui dont je parle le plus
+  volontiers en entretien, précisément parce qu'il a des limites assumées.
+</p>
+"""),
+        ],
+    },
+]
+
+PROJETS = CYBER + APPS + CREA

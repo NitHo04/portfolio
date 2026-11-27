@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>BOJJ Boutique, une boutique de maillots en ligne · Benitho Ntenda</title>
+<meta name="description" content="Un site e-commerce complet en HTML, CSS et JavaScript vanilla : catalogue, fiche produit, panier, checkout simulé et compte client. 125 boutons câblés, aucun bouton mort, et le site est en ligne.">
+<meta name="author" content="Benitho Ntenda">
+<meta property="og:title" content="BOJJ Boutique, une boutique de maillots en ligne · Benitho Ntenda">
+<meta property="og:description" content="Un site e-commerce complet en HTML, CSS et JavaScript vanilla : catalogue, fiche produit, panier, checkout simulé et compte client. 125 boutons câblés, aucun bouton mort, et le site est en ligne.">
+<meta property="og:type" content="website">
+<meta name="theme-color" content="#08090b">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%2308090b'/%3E%3Ccircle cx='16' cy='16' r='7' fill='%23e0a458'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+<a class="skip" href="#contenu">Aller au contenu</a>
+<header class="site-header" id="top">
+  <div class="wrap site-header__inner">
+    <a class="brand" href="../index.html"><span class="brand__dot"></span>Benitho Ntenda</a>
+    <nav class="site-nav" aria-label="Navigation principale">
+      <a href="../index.html#travaux">Travaux</a>
+      <a href="../index.html#apropos" data-hide>À propos</a>
+      <a href="../index.html#competences" data-hide>Compétences</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<main id="contenu" class="fiche">
+  <div class="wrap">
+    <div class="fiche__head">
+      <div>
+        <p class="fiche__kicker">13 · Site e-commerce · 2026</p>
+        <h1 class="fiche__title">BOJJ Boutique, une boutique de maillots en ligne</h1>
+        <p class="fiche__lede">Un site e-commerce complet en HTML, CSS et JavaScript vanilla : catalogue, fiche produit, panier, checkout simulé et compte client. 125 boutons câblés, aucun bouton mort, et le site est en ligne.</p>
+      </div>
+      <dl class="specs"><div><dt>Cadre</dt><dd>Projet personnel</dd></div><div><dt>Rôle</dt><dd>Design, développement et déploiement</dd></div><div><dt>Pile</dt><dd>HTML, CSS et JavaScript vanilla, une page, sans framework</dd></div><div><dt>En ligne</dt><dd>bojj-boutique.vercel.app</dd></div></dl>
+    </div>
+
+    <figure class="fiche__figure">
+      <img src="../assets/img/bojj.webp" alt="La page d&#x27;accueil de BOJJ Boutique, déployée sur Vercel." width="1680" height="1050" decoding="async">
+      <figcaption>La page d&#x27;accueil de BOJJ Boutique, déployée sur Vercel.</figcaption>
+    </figure>
+
+    <section class="block">
+  <h2 class="block__title">Contexte</h2>
+  <div class="block__body">
+<p>
+  Une boutique de maillots de clubs et de sélections, pensée pour le public de la
+  RDC. Le design venait d'un brief importé ; le travail a été de l'implémenter
+  vraiment, écran par écran, sans framework et sans backend, jusqu'à une version
+  publique.
+</p>
+<p>
+  La contrainte posée était simple à énoncer et exigeante à tenir : <strong>tous les
+  boutons du site doivent faire quelque chose</strong>. Un site de démonstration où
+  la moitié des liens ne répond pas ne démontre rien.
+</p>
+</div>
+</section><section class="block">
+  <h2 class="block__title">Ce que j&#x27;ai fait</h2>
+  <div class="block__body">
+<ul>
+  <li><strong>Dix pages fonctionnelles</strong> : accueil, catalogue, fiche produit, checkout, compte client, paiements, à propos, livraison, contact et les modales du pied de page.</li>
+  <li><strong>Navigation et préférences</strong> : sélecteur de langue français/anglais, devises USD, CDF et EUR.</li>
+  <li><strong>Catalogue</strong> : filtres par taille, pagination, neuf produits codés en dur.</li>
+  <li><strong>Fiche produit</strong> : galerie, choix de la taille et de la version, quantité, onglets description, guide des tailles, livraison et avis, avec recalcul du total en temps réel.</li>
+  <li><strong>Checkout</strong> : changement de pays, édition d'adresse, code promo, choix du moyen de paiement (carte, PayPal, Apple Pay, Mobile Money) et confirmation de commande.</li>
+  <li><strong>Mini-panier et wishlist</strong> : ouverture, fermeture et compteur dynamique, cœur cliquable partout.</li>
+  <li><strong>Validation automatique</strong> : HTML vérifié par parseur, JavaScript par node --check, et clic simulé sur tous les boutons avec jsdom (zéro erreur runtime).</li>
+  <li><strong>Déploiement</strong> : en ligne sur Vercel.</li>
+</ul>
+</div>
+</section><section class="block">
+  <h2 class="block__title">Résultat</h2>
+  <div class="block__body">
+<dl class="kpis">
+  <div><dt>Boutons audités</dt><dd>125</dd></div>
+  <div><dt>Boutons morts</dt><dd>0</dd></div>
+  <div><dt>Produits au catalogue</dt><dd>9</dd></div>
+</dl>
+<p>
+  Le site se parcourt de bout en bout, du catalogue à la confirmation de commande,
+  avec un panier qui calcule, une wishlist qui mémorise la sélection pendant la
+  visite et un checkout qui vérifie chaque étape.
+</p>
+</div>
+</section><section class="block">
+  <h2 class="block__title">Limites</h2>
+  <div class="block__body">
+<ul>
+  <li><strong>Aucun paiement réel</strong> : le bouton « Payer » simule une confirmation, aucune transaction bancaire n'a lieu.</li>
+  <li>Catalogue statique de neuf produits, sans base de données ni administration.</li>
+  <li>Le panier et la wishlist ne persistent pas entre les rechargements, faute de stockage local ou de backend.</li>
+  <li>Pas de compte client réel : la page « Mon compte » est une maquette avec des données d'exemple.</li>
+  <li>Newsletter et formulaire de contact valident la saisie mais n'envoient rien.</li>
+  <li>Le contenu anglais n'est pas traduit : la bascule affiche un message.</li>
+</ul>
+</div>
+</section><section class="block">
+  <h2 class="block__title">Ce que ça démontre</h2>
+  <div class="block__body">
+<p>
+  Mener un site e-commerce complet jusqu'à une version en ligne : design, code,
+  déploiement, et surtout la discipline de câbler chaque contrôle puis de le
+  vérifier automatiquement.
+</p>
+<p>
+  Et une leçon de produit : une démo e-commerce ne se juge pas sur la beauté du
+  visuel, mais sur ce qui se passe quand on clique. Ici, tout se passe.
+</p>
+</div>
+</section>
+
+    <div class="block__body" style="padding-block:2rem 0">
+      <ul class="tags"><li>HTML / CSS / JavaScript</li><li>E-commerce</li><li>UI</li><li>Déploiement</li><li>Audit</li></ul>
+    </div>
+
+    <nav class="fiche__nav" aria-label="Navigation entre projets">
+      <a href="jeu-runner-3d.html">← Runner 3D, un jeu de course dans une page</a>
+      <a href="kessy-noire.html">Kessy Noire, un personnage IA pour des récits à suspense →</a>
+    </nav>
+  </div>
+</main>
+<footer class="footer" id="contact">
+  <div class="wrap">
+    <h2 class="footer__title">Travaillons ensemble</h2>
+    <p class="footer__text">
+      Je cherche une alternance ou un stage en cybersécurité, et je prends aussi des
+      projets de design et d'automatisation. Écris-moi, je réponds vite.
+    </p>
+    <a class="mail" href="mailto:benithooff04@icloud.com">benithooff04@icloud.com</a>
+    <p class="mail__hint">Ou copie l'adresse<span class="copy-zone">
+      <button class="btn btn--copy" type="button" data-copy="benithooff04@icloud.com">Copier</button>
+    </span></p>
+    <div class="footer__links">
+      <a href="https://www.linkedin.com/in/benitho-ntenda-43b680398" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="https://github.com/NitHo04" target="_blank" rel="noopener">GitHub</a>
+      <a href="mailto:benithooff04@icloud.com">Envoyer un email</a>
+    </div>
+    <p class="footer__legal">
+      <span>Benitho Ntenda · Paris</span>
+      <span>Portfolio personnel, 2026</span>
+    </p>
+  </div>
+</footer>
+<script src="../assets/app.js" defer></script>
+</body>
+</html>

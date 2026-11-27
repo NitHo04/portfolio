@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MyMe, un espace privé chiffré dans une application ordinaire · Benitho Ntenda</title>
+<meta name="description" content="Une application de confidentialité : interface publique banale, espace privé derrière un code secret et la biométrie, moteur cryptographique testé.">
+<meta name="author" content="Benitho Ntenda">
+<meta property="og:title" content="MyMe, un espace privé chiffré dans une application ordinaire · Benitho Ntenda">
+<meta property="og:description" content="Une application de confidentialité : interface publique banale, espace privé derrière un code secret et la biométrie, moteur cryptographique testé.">
+<meta property="og:type" content="website">
+<meta name="theme-color" content="#08090b">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%2308090b'/%3E%3Ccircle cx='16' cy='16' r='7' fill='%23e0a458'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+<a class="skip" href="#contenu">Aller au contenu</a>
+<header class="site-header" id="top">
+  <div class="wrap site-header__inner">
+    <a class="brand" href="../index.html"><span class="brand__dot"></span>Benitho Ntenda</a>
+    <nav class="site-nav" aria-label="Navigation principale">
+      <a href="../index.html#travaux">Travaux</a>
+      <a href="../index.html#apropos" data-hide>À propos</a>
+      <a href="../index.html#competences" data-hide>Compétences</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<main id="contenu" class="fiche">
+  <div class="wrap">
+    <div class="fiche__head">
+      <div>
+        <p class="fiche__kicker">09 · Application de sécurité · 2026</p>
+        <h1 class="fiche__title">MyMe, un espace privé chiffré dans une application ordinaire</h1>
+        <p class="fiche__lede">Une application de confidentialité : interface publique banale, espace privé derrière un code secret et la biométrie, moteur cryptographique testé.</p>
+      </div>
+      <dl class="specs"><div><dt>Cadre</dt><dd>Projet personnel</dd></div><div><dt>Rôle</dt><dd>Conception, cryptographie et développement</dd></div><div><dt>Pile</dt><dd>Expo 58, React Native 0.88, TypeScript strict</dd></div><div><dt>État</dt><dd>Étape 3, authentification en place</dd></div></dl>
+    </div>
+
+    <figure class="fiche__figure fiche__figure--icon">
+      <img src="../assets/img/myme.webp" alt="L&#x27;icône de MyMe : un monogramme neutre, volontairement sans rapport avec la sécurité." width="1024" height="1024" decoding="async">
+      <figcaption>L&#x27;icône de MyMe : un monogramme neutre, volontairement sans rapport avec la sécurité.</figcaption>
+    </figure>
+
+    <section class="block">
+  <h2 class="block__title">Contexte</h2>
+  <div class="block__body">
+<p>
+  Une application de confidentialité a un problème que les autres n'ont pas : son
+  existence même est une information. Un téléphone qu'on ouvre volontairement devant
+  quelqu'un ne doit rien laisser paraître.
+</p>
+<p>
+  D'où le principe de MyMe : une interface publique ordinaire au premier regard, et un
+  espace privé chiffré derrière une authentification. Le nom, l'icône et l'écran
+  d'accueil sont volontairement neutres.
+</p>
+</div>
+</section><section class="block">
+  <h2 class="block__title">Ce que j&#x27;ai fait</h2>
+  <div class="block__body">
+<ul>
+  <li><strong>Moteur cryptographique</strong> bâti sur des bibliothèques auditées : chiffrement authentifié, dérivation de clé, hachage, aléa fourni par le système.</li>
+  <li><strong>Espaces privés indépendants</strong> : plusieurs espaces étanches, chacun avec son code, sans qu'un espace puisse révéler l'existence d'un autre.</li>
+  <li><strong>Authentification</strong> par code secret, biométrie adossée au stockage protégé de l'appareil, verrouillage automatique et limitation des tentatives.</li>
+  <li><strong>259 tests automatisés</strong> sur le moteur, écrits avant l'interface, avec des vecteurs de test connus.</li>
+  <li><strong>Documentation d'architecture et de sécurité</strong> : modèle de menace, choix cryptographiques, ce qui est protégé et ce qui ne l'est pas.</li>
+  <li><strong>Internationalisation et thèmes</strong> dès le départ, pour ne pas les rétroficer après coup.</li>
+</ul>
+</div>
+</section><section class="block">
+  <h2 class="block__title">Résultat</h2>
+  <div class="block__body">
+<dl class="kpis">
+  <div><dt>Tests automatisés</dt><dd>259</dd></div>
+  <div><dt>Fichiers sources</dt><dd>74</dd></div>
+  <div><dt>Étape</dt><dd>3 sur 6</dd></div>
+</dl>
+<p>
+  Le socle technique, l'identité visuelle, les thèmes, l'internationalisation et
+  l'authentification sont en place, avec la création d'espaces privés et la biométrie.
+</p>
+<div class="note">
+  <p>
+    <strong>Un point bloquant, documenté plutôt que masqué :</strong> la dérivation de
+    clé Argon2id en JavaScript pur coûte environ 35 secondes sur l'émulateur aux
+    paramètres de production. Le calcul doit passer en natif. C'est le genre de mesure
+    qu'on préfère trouver soi même avant qu'un utilisateur ne la trouve.
+  </p>
+</div>
+</div>
+</section><section class="block">
+  <h2 class="block__title">Limites</h2>
+  <div class="block__body">
+<ul>
+  <li>Aucun coffre-fort de fichiers n'existe encore : c'est l'objet des étapes suivantes.</li>
+  <li>La dérivation Argon2id reste trop lente en JavaScript, en attente du passage en natif.</li>
+  <li>Le modèle de menace couvre la perte ou le vol de l'appareil, pas un appareil compromis avec privilèges système.</li>
+  <li>Pas de build de production signé, donc aucune validation sur appareil physique pour l'instant.</li>
+</ul>
+</div>
+</section><section class="block">
+  <h2 class="block__title">Ce que ça démontre</h2>
+  <div class="block__body">
+<p>
+  Concevoir de la sécurité côté client pour de vrai : choisir des primitives éprouvées
+  plutôt que les inventer, écrire les tests avant l'interface, mesurer ce qui coûte
+  cher, et documenter ce qui ne marche pas encore.
+</p>
+<p>
+  C'est le projet le plus proche du métier que je vise, et celui dont je parle le plus
+  volontiers en entretien, précisément parce qu'il a des limites assumées.
+</p>
+</div>
+</section>
+
+    <div class="block__body" style="padding-block:2rem 0">
+      <ul class="tags"><li>Cryptographie</li><li>React Native</li><li>Tests</li><li>Sécurité mobile</li></ul>
+    </div>
+
+    <nav class="fiche__nav" aria-label="Navigation entre projets">
+      <a href="millionnaire-congolais.html">← Le Millionnaire Congolais, jeu de quiz</a>
+      <a href="affiche-atla-el-roi.html">Affiche et déclinaisons pour un premier anniversaire →</a>
+    </nav>
+  </div>
+</main>
+<footer class="footer" id="contact">
+  <div class="wrap">
+    <h2 class="footer__title">Travaillons ensemble</h2>
+    <p class="footer__text">
+      Je cherche une alternance ou un stage en cybersécurité, et je prends aussi des
+      projets de design et d'automatisation. Écris-moi, je réponds vite.
+    </p>
+    <a class="mail" href="mailto:benithooff04@icloud.com">benithooff04@icloud.com</a>
+    <p class="mail__hint">Ou copie l'adresse<span class="copy-zone">
+      <button class="btn btn--copy" type="button" data-copy="benithooff04@icloud.com">Copier</button>
+    </span></p>
+    <div class="footer__links">
+      <a href="https://www.linkedin.com/in/benitho-ntenda-43b680398" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="https://github.com/NitHo04" target="_blank" rel="noopener">GitHub</a>
+      <a href="mailto:benithooff04@icloud.com">Envoyer un email</a>
+    </div>
+    <p class="footer__legal">
+      <span>Benitho Ntenda · Paris</span>
+      <span>Portfolio personnel, 2026</span>
+    </p>
+  </div>
+</footer>
+<script src="../assets/app.js" defer></script>
+</body>
+</html>
